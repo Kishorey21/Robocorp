@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.1 (Python 3.9.13 on win32)" generated="20221214 12:23:57.400" rpa="true" schemaversion="3">
+<suite id="s1" name="Tasks" source="c:\Users\kishore.yelikipati\Documents\Robots\stringmatches\tasks.robot">
+<test id="s1-t1" name="StringBW Reusable" line="16">
+<kw name="Checking String Between data in Template InputString">
+<arg>${InputStringData}</arg>
+<arg>${StartString}</arg>
+<arg>${StringEnding}</arg>
+<kw name="Split String" library="String">
+<var>${result}</var>
+<arg>${InputStringData}</arg>
+<arg>${StartString}</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<msg timestamp="20221214 12:24:00.302" level="INFO">${result} = ['', ' of value addition robot framework']</msg>
+<status status="PASS" starttime="20221214 12:24:00.298" endtime="20221214 12:24:00.311"/>
+</kw>
+<kw name="Split String" library="String">
+<var>${result}</var>
+<arg>${result}[1]</arg>
+<arg>${StringEnding}</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<msg timestamp="20221214 12:24:00.318" level="INFO">${result} = [' of value addition robot ', '']</msg>
+<status status="PASS" starttime="20221214 12:24:00.313" endtime="20221214 12:24:00.319"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${result}</var>
+<arg>${result}[0]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221214 12:24:00.325" level="INFO">${result} =  of value addition robot </msg>
+<status status="PASS" starttime="20221214 12:24:00.322" endtime="20221214 12:24:00.326"/>
+</kw>
+<kw name="Strip String" library="String">
+<var>${result}</var>
+<arg>${result}</arg>
+<arg>both</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20221214 12:24:00.338" level="INFO">${result} = of value addition robot</msg>
+<status status="PASS" starttime="20221214 12:24:00.328" endtime="20221214 12:24:00.339"/>
+</kw>
+<kw name="Read File" library="RPA.FileSystem">
+<var>${content}</var>
+<arg>C:${/}Users${/}kishore.yelikipati${/}Downloads${/}A_R Invoice - 97031.pdf.txt</arg>
+<doc>Reads a file as text, with given `encoding`, and returns the content."</doc>
+<msg timestamp="20221214 12:24:00.355" level="INFO">${content} = INVOICE  
+
+Document Number
+
+Document Date
+
+Page
+
+AR INV97031
+
+Customer No.
+
+C16355
+
+11/23/20
+
+PO Number
+
+4501124399 Line 30
+
+Order Taken By: Kelli Smith
+
+Account Manager: Rebecca Tussey
+
+Delivery Addr...</msg>
+<status status="PASS" starttime="20221214 12:24:00.340" endtime="20221214 12:24:00.355"/>
+</kw>
+<kw name="Should Match Regexp" library="BuiltIn">
+<var>${INVNumber}</var>
+<arg>${content}</arg>
+<arg>INV\\d+</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<msg timestamp="20221214 12:24:00.360" level="INFO">${INVNumber} = INV97031</msg>
+<status status="PASS" starttime="20221214 12:24:00.357" endtime="20221214 12:24:00.361"/>
+</kw>
+<kw name="Should Match Regexp" library="BuiltIn">
+<var>${Invoice}</var>
+<arg>${content}</arg>
+<arg>.*(?=\s*INV\\d+)</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<msg timestamp="20221214 12:24:00.394" level="INFO">${Invoice} = AR </msg>
+<status status="PASS" starttime="20221214 12:24:00.363" endtime="20221214 12:24:00.395"/>
+</kw>
+<kw name="Catenate" library="BuiltIn">
+<var>${INVoiceNumber}</var>
+<arg>${Invoice}</arg>
+<arg>${INVNumber}</arg>
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<msg timestamp="20221214 12:24:00.400" level="INFO">${INVoiceNumber} = AR  INV97031</msg>
+<status status="PASS" starttime="20221214 12:24:00.395" endtime="20221214 12:24:00.400"/>
+</kw>
+<status status="PASS" starttime="20221214 12:24:00.291" endtime="20221214 12:24:00.400"/>
+</kw>
+<status status="PASS" starttime="20221214 12:24:00.285" endtime="20221214 12:24:00.402"/>
+</test>
+<doc>Template robot main suite.</doc>
+<status status="PASS" starttime="20221214 12:23:57.427" endtime="20221214 12:24:00.411"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
