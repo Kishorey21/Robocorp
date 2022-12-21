@@ -1,27 +1,20 @@
 *** Settings ***
-Documentation       Template robot main suite.
-
-Library             String
-Library             RPA.Browser.Selenium
-Library             RPA.FileSystem
+Library     String
 
 
 *** Variables ***
 ${InputStringData}      List of value addition robot framework
-${StartString}          List
-${StringEnding}         framework
+${StringAfter}          addition
 
 
 *** Tasks ***
-StringBW Reusable
-    Checking String Between data in Template InputString    ${InputStringData}    ${StartString}    ${StringEnding}
+StringAfter Reusable
+    Checking String After data in Template InputString    ${InputStringData}    ${StringAfter}
 
 
 *** Keywords ***
-Checking String Between data in Template InputString
-    [Arguments]    ${InputStringData}    ${StartString}    ${StringEnding}
-    ${content}=    Read File    C:${/}Users${/}kishore.yelikipati${/}Downloads${/}A_R Invoice - 97031.pdf.txt
-    ${INVNumber}=    Should Match Regexp    ${content}    INV\\d+
-    ${Invoice}=    Should Match Regexp    ${content}    .*(?=\s*INV\\d+)
-    ${INVoiceNumber}=    Catenate    ${Invoice}    ${INVNumber}
-    ${result}=    Should Match Regexp    ${content}    \\w{2}\\s\\w{3}\\d{5}
+Checking String After data in Template InputString
+    [Arguments]    ${InputStringData}    ${BeforeString}
+    ${result}=    Split String    ${InputStringData}    ${StringAfter}
+    ${result}=    Set Variable    ${result}[1]
+    ${result}=    Strip String    ${result}    both

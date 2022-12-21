@@ -1,6 +1,6 @@
 tasks:
-  StringBW Reusable:
-    robotTaskName: StringBW Reusable
+  StringAfter Reusable:
+    robotTaskName: StringAfter Reusable
 condaConfigFile: conda.yaml
 ignoreFiles:
 - .gitignore
